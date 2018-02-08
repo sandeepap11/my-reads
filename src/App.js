@@ -6,6 +6,8 @@ import './App.css'
 import Search from './Search'
 
 class BooksApp extends React.Component {
+
+  
   state = {
 
     // State variable to hold all books in the user's profile
@@ -65,7 +67,7 @@ class BooksApp extends React.Component {
   render() {
     // Route to Books for Home page and Search for search
     return (
-		  <div className="app">      
+		  <div className="app">
 			<Route exact path='/' render={
 
 				() => (	<Books allBooks={this.state.allBooks} onSelect={this.onSelect} /> )

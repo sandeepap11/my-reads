@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import ShowBook from './ShowBook'
 
 class SearchResults extends Component{
@@ -8,6 +9,11 @@ class SearchResults extends Component{
 		searchResults : []
 	}
 
+	static propTypes = {
+		fromSearchResults: PropTypes.array.isRequired,
+		allBooks: PropTypes.array.isRequired
+
+	}
 
 
 	updateOnProps = (fromSearchResults, allBooks) => {

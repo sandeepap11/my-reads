@@ -1,8 +1,15 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import ShowBook from './ShowBook'
 
 class Books extends Component{
+
+	static propTypes = {
+		allBooks: PropTypes.array.isRequired,
+		onSelect: PropTypes.func.isRequired
+
+	}
 
 	render(){
 

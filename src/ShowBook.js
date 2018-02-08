@@ -1,7 +1,14 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 class ShowBook extends Component{
 
+	static propTypes = {
+		book: PropTypes.object.isRequired,
+		onSelect: PropTypes.func.isRequired,
+		thumbNail: PropTypes.string
+
+	}
 
 	render(){
 
