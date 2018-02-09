@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import ShowBook from './ShowBook'
+import ShowShelf from './ShowShelf'
 
 class SearchResults extends Component{
 
@@ -9,16 +8,14 @@ class SearchResults extends Component{
 		searchResults : []
 	}
 
-	static propTypes = {
-		fromSearchResults: PropTypes.array.isRequired,
-		allBooks: PropTypes.array.isRequired
-
-	}
-
 
 	updateOnProps = (fromSearchResults, allBooks) => {
 
     this.setState({searchResults:fromSearchResults})
+
+		if(fromSearchResults.length === undefined || fromSearchResults.length === undefined){
+			return
+		}
 
 		for(let searchResult of fromSearchResults){
 
@@ -33,6 +30,7 @@ class SearchResults extends Component{
 				}
 			}
 		}
+
 	}
 
 	componentDidMount(){
@@ -56,32 +54,26 @@ class SearchResults extends Component{
 	render(){
 
 	const {searchResults} = this.state
-	let thumbNails = []
 
-	for(let searchResult of searchResults){
+	if(!(searchResults.length === undefined || searchResults.length === 0)){
+		for(let searchResult of searchResults){
 
-		if(!searchResult.imageLinks){
-
-				thumbNails[searchResults.indexOf(searchResult)] = ''
+			if(!searchResult.imageLinks){
+				searchResult.imageLinks = [{smallThumbnail: ''}]
 			}
-		else{
-				thumbNails[searchResults.indexOf(searchResult)] = searchResult.imageLinks.smallThumbnail
-			}
+
 		}
-
-
+	}
 
 	return(<div className="bookshelf-books">
-				<ol className="books-grid">
 
-								{searchResults.map((searchResult) => (
+					{
 
-								<ShowBook key={searchResult.id} book={searchResult} onSelect={this.selectBook} thumbNail={thumbNails[searchResults.indexOf(searchResult)]}/>
-							)
-						)
+								<ShowShelf books={searchResults} onSelect={this.selectBook} message={this.props.message}/>
+
 					}
 
-				</ol>
+
 			</div>
 		)
 	}

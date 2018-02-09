@@ -13,7 +13,8 @@ class Search extends Component{
 	}
 
 	state={query: '',
-		   searchResults: []
+		   searchResults: [],
+			 message: ''
 		  }
 
 	updateQuery = (query) => {
@@ -25,12 +26,17 @@ class Search extends Component{
 				BooksAPI.search(query).then(
         				(searchResults) => {
 						this.setState({searchResults})
-					}
+						this.setState({message: 'No results found'})
+					},
+	        () => {
+						this.setState({searchResults:[]})
+	          this.setState({message: 'Connection error. Please try again or try later.'})
+	        }
 				)
 			}
 			else {
 				this.setState({searchResults:[]})
-
+				
 			}
 
         }
@@ -52,7 +58,7 @@ class Search extends Component{
 
 	render(){
 
-		const {query, searchResults} = this.state
+		const {query, searchResults, message} = this.state
 
 		return (
 
@@ -65,9 +71,9 @@ class Search extends Component{
 							<div onClick={() => (this.clearSearch())} className="clear-search">Clear</div>
             </div>
             <div className="search-books-results">
-								{ (query.length > 0) && (searchResults.length === undefined) && (<div className='no-results'>No Search Results Found</div>)}
-								{ (query.length > 0) && (searchResults.length > 0) &&
-									(<SearchResults fromSearchResults={searchResults} allBooks={this.props.allBooks} onSelect={this.props.onSelect}/>)}
+								{ (query.length > 0) &&
+									(<SearchResults fromSearchResults={searchResults} allBooks={this.props.allBooks} onSelect={this.props.onSelect} message={message}/>)
+								}
 						</div>
       </div>)
 

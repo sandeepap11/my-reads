@@ -7,11 +7,12 @@ import Search from './Search'
 
 class BooksApp extends React.Component {
 
-  
+
   state = {
 
-    // State variable to hold all books in the user's profile
-		allBooks : []
+    // State variable to hold all books in the user's profile and message when there are no books in shelf.
+		allBooks : [],
+    message : ''
 
   }
 
@@ -20,7 +21,11 @@ class BooksApp extends React.Component {
     	BooksAPI.getAll().then(
 				(books) => {
 					this.setState({allBooks:books})
-				}
+          this.setState({message: 'No books yet. Add books using Search.'})
+				},
+        () => {
+          this.setState({message: 'Connection error. Please try again or try later.'})
+        }
     	)
 
 	}
@@ -70,7 +75,7 @@ class BooksApp extends React.Component {
 		  <div className="app">
 			<Route exact path='/' render={
 
-				() => (	<Books allBooks={this.state.allBooks} onSelect={this.onSelect} /> )
+				() => (	<Books allBooks={this.state.allBooks} onSelect={this.onSelect} message={this.state.message}/> )
 
 			}/>
 

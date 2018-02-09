@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
-import ShowBook from './ShowBook'
+import ShowShelf from './ShowShelf'
 
 class Books extends Component{
 
 	static propTypes = {
 		allBooks: PropTypes.array.isRequired,
-		onSelect: PropTypes.func.isRequired
-
+		onSelect: PropTypes.func.isRequired,
+		message: PropTypes.string
 	}
 
 	render(){
@@ -18,16 +18,11 @@ class Books extends Component{
 												{value:"wantToRead", title:"Want to Read"},
 												{value:"read", title:"Read"}]
 
-		const {allBooks, onSelect} = this.props
+		const {allBooks, onSelect, message} = this.props
 
-		if(allBooks.length === 0){
+		if(!(allBooks.length === undefined || allBooks.length === 0)){
 
-		 return false
-
-		}
-		else{
-
-			for(let book of allBooks){
+					for(let book of allBooks){
 
 					if(!book.imageLinks){
 						book.imageLinks = [{smallThumbnail: ''}]
@@ -49,18 +44,13 @@ class Books extends Component{
 										<div className="bookshelf">
 											<h2 className="bookshelf-title">{shelf.title}</h2>
 											<div className="bookshelf-books">
-												<ol className="books-grid">
 
 												{
-													allBooks.filter((book) =>(book.shelf === shelf.value)).map((book) =>(
 
-														<ShowBook key={book.id} book={book} onSelect={onSelect} thumbNail={book.imageLinks.smallThumbnail}/>
+														<ShowShelf books={allBooks.filter((book) =>(book.shelf === shelf.value))} onSelect={onSelect} message={message}/>
 
-														)
-													)
 												}
 
-												</ol>
 											</div>
 										</div>
 									</div>
