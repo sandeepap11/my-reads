@@ -13,7 +13,7 @@ class Books extends Component{
 
 	render(){
 
-		// Define shlves to re-use
+		// Define shelves to re-use
 		const shelves = [{value:"currentlyReading", title:"Currently Reading"},
 												{value:"wantToRead", title:"Want to Read"},
 												{value:"read", title:"Read"}]
