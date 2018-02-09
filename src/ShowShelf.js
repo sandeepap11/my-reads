@@ -31,7 +31,7 @@ class ShowShelf extends Component{
 				<li key={book.id}>
 					<div className="book">
 						<div className="book-top">
-										<div className="book-cover" style={{ width: 150, height: 180, backgroundSize:'cover', backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+										<div className="book-cover" style={{ backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
 											<div className="book-shelf-changer">
 												  <select onChange={(event) => onSelect(event.target.value, book)} value={book.shelf}>
 														<option value="moveto" disabled>Move to...</option>

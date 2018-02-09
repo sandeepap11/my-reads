@@ -197,13 +197,13 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
-	border: solid 2px white;
+  width: 120px;
+  height: 180px;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.book-cover:hover {
-  width: 140px;
-	border: solid 2px green;
-}
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
