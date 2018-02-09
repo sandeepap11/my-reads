@@ -22,6 +22,7 @@ class ShowShelf extends Component{
 			)
 		}
 
+		// Display books on the given shelf.
 		return(
 
 			<ol className="books-grid">
