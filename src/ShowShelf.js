@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 
 class ShowShelf extends Component{
 
+	state={
+		checked : false,
+		selectedBooks:[]
+	}
+
 	render(){
 
 		const {books, onSelect, message} = this.props
@@ -19,8 +24,8 @@ class ShowShelf extends Component{
 
 		return(
 
-
 			<ol className="books-grid">
+
 			{books.map(book => (
 				<li key={book.id}>
 					<div className="book">

@@ -46,14 +46,13 @@ class SearchResults extends Component{
 	}
 
 	/**
-	* @description: This method updates the bookshelf of books in search results page when updated. Then it updates the Home Page shelves. 
+	* @description: This method updates the bookshelf of books in search results page when updated. Then it updates the Home Page shelves.
 	* @param {string} value - The new shelf
 	* @param {object} book - The book
 	**/
 	selectBook = (value, book) =>{
 
 		this.setState((state)=>(state.searchResults[state.searchResults.indexOf(book)].shelf=value ))
-
 
 		this.props.onSelect(value, book)
 
