@@ -54,12 +54,13 @@ class Search extends Component{
         }
 
 				/**
-				* @description: This method is to clear search query and hence results
+				* @description: This method is to clear search query and the results
 				**/
 				clearSearch = () => {
 
 					if(this.state.query.length > 0){
 							this.setState({query: ''})
+							this.setState({searchResults:[]})
 					}
 
 				}
