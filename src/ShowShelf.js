@@ -12,7 +12,7 @@ class ShowShelf extends Component{
 		const {books, onSelect, message} = this.props
 
 
-		// Display appropriate message when no there are no books to show
+		// Display appropriate message when there are no books to show
 		if(books.length === undefined || books.length === 0){
 			return (
 
