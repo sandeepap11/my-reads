@@ -17,7 +17,7 @@ class SearchResults extends Component{
 
     this.setState({searchResults:fromSearchResults})
 
-		if(fromSearchResults.length === undefined || fromSearchResults.length === undefined){
+		if(fromSearchResults.length === undefined || fromSearchResults.length === 0){
 			return
 		}
 

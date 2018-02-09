@@ -34,7 +34,10 @@ class Search extends Component{
 							BooksAPI.search(query).then(
         				(searchResults) => {
 									this.setState({searchResults})
+
+									if(searchResults.length === undefined || searchResults.length === 0){
 									this.setState({message: 'No results found'})
+									}
 								},
 
 				        () => {
