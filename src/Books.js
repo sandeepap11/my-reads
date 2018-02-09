@@ -20,6 +20,7 @@ class Books extends Component{
 
 		const {allBooks, onSelect, message} = this.props
 
+		// Fix books which do not have thumbnail images so that they have empty thumbnails
 		if(!(allBooks.length === undefined || allBooks.length === 0)){
 
 					for(let book of allBooks){

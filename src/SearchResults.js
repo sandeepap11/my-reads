@@ -8,7 +8,11 @@ class SearchResults extends Component{
 		searchResults : []
 	}
 
-
+	/**
+	* @description: This method updates the search results when initial or new props are received. This also updates book shelves to values as in the Home Page when present and to 'none' when not present
+	* @param {array} fromSearchResults - Search results
+	* @param {array} allBooks - Books under the user profile in Home Page
+	**/
 	updateOnProps = (fromSearchResults, allBooks) => {
 
     this.setState({searchResults:fromSearchResults})
@@ -41,7 +45,11 @@ class SearchResults extends Component{
 		this.updateOnProps(nextProps.fromSearchResults, nextProps.allBooks)
 	}
 
-
+	/**
+	* @description: This method updates the bookshelf of books in search results page when updated. Then it updates the Home Page shelves. 
+	* @param {string} value - The new shelf
+	* @param {object} book - The book
+	**/
 	selectBook = (value, book) =>{
 
 		this.setState((state)=>(state.searchResults[state.searchResults.indexOf(book)].shelf=value ))
